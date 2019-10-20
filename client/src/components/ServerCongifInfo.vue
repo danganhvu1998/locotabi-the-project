@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ServerCongifInfo',
   data () {
     return {
       backend: process.env.BACKEND_SERVER_ADDRESS,
