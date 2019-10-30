@@ -1,3 +1,9 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "user info": "User Info",
+  "logout all": "Logout All",
+  "logout": "Logout",
+  "register": "Register",
+  "login": "Login",
+  "user": "User"
 }
