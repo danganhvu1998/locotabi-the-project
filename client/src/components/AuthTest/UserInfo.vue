@@ -1,12 +1,13 @@
 <template>
   <div>
+    <hr>
+    <h1>{{$t('user info')}}</h1>
     <span><button @click='userLogout()'>{{$t('logout')}}</button></span>
-    <span><button @click='userLogoutAll()'>{{$t('logoutAll')}}</button></span><br>
-    <button v-for='language in languages' v-bind:key='language.title' @click='changeLocale(language.language)'>
-      {{language.title}}
+    <span><button @click='userLogoutAll()'>{{$t('logout all')}}</button></span><br>
+    <button v-for='language in languages' v-bind:key='language.language' @click='localeChange(language.locale)'>
+      {{language.language}}
     </button>
     <span>{{$t('user')}}: <b>{{username}}</b></span><br>
-    <hr>
   </div>
 </template>
 
@@ -16,14 +17,17 @@ export default {
   name: 'UserInfo',
   computed: mapGetters(['username']),
   methods: {
-    ...mapActions(['userInfo', 'userLogout', 'userLogoutAll'])
+    ...mapActions(['userInfo', 'userLogout', 'userLogoutAll']),
+    localeChange (locale) {
+      this.$i18n.locale = locale
+    }
   },
   data () {
     return {
       languages: [
-        {language: 'vi', title: 'VI'},
-        {language: 'en', title: 'EN'},
-        {language: 'ja', title: 'JA'}
+        {locale: 'vi', language: 'VI'},
+        {locale: 'en', language: 'EN'},
+        {locale: 'ja', language: 'JA'}
       ]
     }
   },

@@ -1,6 +1,7 @@
 <template>
   <div>
     <hr>
+    <h1>{{$t('login')}}</h1>
     <div>
       <form @submit="onLogin">
         <input type="text" v-model="email" placeholder="email"><br>
