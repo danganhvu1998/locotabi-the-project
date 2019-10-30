@@ -22,7 +22,6 @@ const getters = {
 }
 
 const actions = {
-  // eslint-disable-next-line
   register ({dispatch}, userInfo) {
     axios.post(
       'http://localhost:9000/api/register', {
@@ -31,11 +30,33 @@ const actions = {
         'password': userInfo.password
       })
       .then(response => {
-        console.log(response.data)
-        // dispatch('login', userInfo)
+        console.log('REGISTER SUCCESS', response.data)
+        dispatch('login', userInfo)
       })
       .catch(error => {
-        console.log(error.response.data.errors)
+        console.log('REGISTER FAILT', error.response.data.errors)
+      })
+  },
+
+  login ({commit, dispatch}, userInfo) {
+    console.log('Login', userInfo)
+    axios.post(
+      'http://localhost:9000/api/login', {
+        'username': userInfo.email,
+        'password': userInfo.password
+      })
+      .then(response => {
+        console.log('LOGIN SUCCESS', response.data)
+        let authInfo = {
+          token_type: response.data.token_type,
+          access_token: response.data.access_token,
+          refresh_token: response.data.refresh_token
+        }
+        VueCookies.set('authInfo', authInfo, '365D')
+        // console.log('COOKIES CHECK', VueCookies.get('authInfo'))
+      })
+      .catch(error => {
+        console.log('LOGIN FAILT', error.response.data.errors)
       })
   }
 }
