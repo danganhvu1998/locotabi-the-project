@@ -1,21 +1,20 @@
 <template>
   <div>
+    <Login />
     <Register />
   </div>
 </template>
 
 <script>
 import Register from './Register'
+import Login from './Login'
 export default {
   name: 'Auth',
   components: {
-    Register
+    Register,
+    Login
   },
   data () {
-    return {
-      backend: process.env.BACKEND_SERVER_ADDRESS,
-      language: process.env.VUE_APP_I18N_LOCALE
-    }
   }
 }
 </script>

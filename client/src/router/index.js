@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ServerCongifInfo from '@/components/ServerCongifInfo'
-import Auth from '@/components/Auth'
+import Auth from '@/components/AuthTest'
 
 Vue.use(Router)
 

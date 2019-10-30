@@ -53,10 +53,40 @@ const actions = {
           refresh_token: response.data.refresh_token
         }
         VueCookies.set('authInfo', authInfo, '365D')
-        // console.log('COOKIES CHECK', VueCookies.get('authInfo'))
+        dispatch('userInfo')
       })
       .catch(error => {
-        console.log('LOGIN FAILT', error.response.data.errors)
+        console.log('LOGIN FAILT', error)
+      })
+  },
+
+  authHeaderMaker () {
+    let authInfo = VueCookies.get('authInfo')
+    let authToken = ''
+    if (state.access_token === '') {
+      authToken = authInfo.token_type + ' ' + authInfo.access_token
+    } else {
+      authToken = state.token_type + ' ' + state.access_token
+    }
+    let config = {
+      headers: {
+        Accept: 'application/json',
+        Authorization: authToken
+      }
+    }
+    return config
+  },
+
+  async userInfo ({commit, dispatch}) {
+    let config = await dispatch('authHeaderMaker')
+    axios.get('http://localhost:9000/api/user', config)
+      .then(response => {
+        console.log('UserInfo SUCCESS', response.data)
+        commit('userInfo', response.data)
+      })
+      .catch(error => {
+        commit('userInfoDelete')
+        console.log('UserInfo SUCCESS', error)
       })
   }
 }
