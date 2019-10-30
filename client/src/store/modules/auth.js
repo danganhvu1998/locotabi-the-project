@@ -88,6 +88,30 @@ const actions = {
         commit('userInfoDelete')
         console.log('UserInfo SUCCESS', error)
       })
+  },
+
+  async userLogout ({commit, dispatch}) {
+    let config = await dispatch('authHeaderMaker')
+    axios.post('http://localhost:8000/api/logout_current', {}, config)
+      .then(response => {
+        console.log('User Infomation', response.data)
+        commit('userInfoDelete')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+
+  async userLogoutAll ({commit, dispatch}) {
+    let config = await dispatch('authHeaderMaker')
+    axios.post('http://localhost:8000/api/logout_current', {}, config)
+      .then(response => {
+        console.log('User Infomation', response.data)
+        commit('userInfoDelete')
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 
