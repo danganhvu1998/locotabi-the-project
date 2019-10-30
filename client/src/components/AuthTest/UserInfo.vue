@@ -1,0 +1,38 @@
+<template>
+  <div>
+    <span><button @click='userLogout()'>{{$t('logout')}}</button></span>
+    <span><button @click='userLogoutAll()'>{{$t('logoutAll')}}</button></span><br>
+    <button v-for='language in languages' v-bind:key='language.title' @click='changeLocale(language.language)'>
+      {{language.title}}
+    </button>
+    <span>{{$t('user')}}: <b>{{username}}</b></span><br>
+    <hr>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+export default {
+  name: 'UserInfo',
+  computed: mapGetters(['username']),
+  methods: {
+    ...mapActions(['userInfo', 'userLogout', 'userLogoutAll'])
+  },
+  data () {
+    return {
+      languages: [
+        {language: 'vi', title: 'VI'},
+        {language: 'en', title: 'EN'},
+        {language: 'ja', title: 'JA'}
+      ]
+    }
+  },
+  created () {
+    this.userInfo()
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
