@@ -9,12 +9,12 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/server_config_info',
+      path: '/test/server_config_info',
       name: 'ServerCongifInfo',
       component: ServerCongifInfo
     },
     {
-      path: '/auth',
+      path: '/test/auth',
       name: 'Auth',
       component: Auth
     }
