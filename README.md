@@ -54,6 +54,7 @@
       3. Laravel Passport(OAuth2): https://laravel.com/docs/5.8/passport
       4. Middleware: https://laravel.com/docs/5.8/middleware
       5. Allow CROS: https://github.com/barryvdh/laravel-cors
+      6. Database Query: https://laravel.com/docs/5.8/queries
    2. Tutorial
       1. Laravel: https://www.youtube.com/watch?v=EU7PRmCpx-0&list=PLillGF-RfqbYhQsN5WMXy6VsDMKGadrJ-
       2. Laravel Passport: https://www.youtube.com/watch?v=HGh0cKEVXPI
