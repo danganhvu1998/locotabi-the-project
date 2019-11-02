@@ -22,96 +22,89 @@ const getters = {
 }
 
 const actions = {
-  register ({dispatch}, userInfo) {
-    axios.post(
-      'http://localhost:9000/api/register', {
-        'email': userInfo.email,
-        'name': userInfo.name,
-        'password': userInfo.password
-      })
-      .then(response => {
-        console.log('REGISTER SUCCESS', response.data)
-        dispatch('login', userInfo)
-      })
-      .catch(error => {
-        console.log('REGISTER FAILT', error.response.data.errors)
-      })
-  },
-
-  login ({commit, dispatch}, userInfo) {
-    console.log('Login', userInfo)
-    axios.post(
-      'http://localhost:9000/api/login', {
-        'username': userInfo.email,
-        'password': userInfo.password
-      })
-      .then(response => {
-        console.log('LOGIN SUCCESS', response.data)
-        let authInfo = {
-          token_type: response.data.token_type,
-          access_token: response.data.access_token,
-          refresh_token: response.data.refresh_token
-        }
-        VueCookies.set('authInfo', authInfo, '365D')
-        dispatch('userInfo')
-      })
-      .catch(error => {
-        console.log('LOGIN FAILT', error)
-      })
-  },
-
-  authHeaderMaker () {
-    let authInfo = VueCookies.get('authInfo')
-    let authToken = ''
-    if (state.access_token === '') {
-      authToken = authInfo.token_type + ' ' + authInfo.access_token
-    } else {
-      authToken = state.token_type + ' ' + state.access_token
-    }
-    let config = {
-      headers: {
-        Accept: 'application/json',
-        Authorization: authToken
+  async register ({dispatch}, userInfo) {
+    let requestData = {
+      type: 'post',
+      url: '/api/register',
+      data: {
+        email: userInfo.email,
+        name: userInfo.name,
+        password: userInfo.password
       }
     }
-    return config
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) dispatch('login', userInfo)
+    else {
+      let ObjectErrors = JSON.parse(res.response).errors
+      console.log('Error', ObjectErrors)
+      // Todo: Show error to user if have
+    }
+  },
+
+  async login ({dispatch}, userInfo) {
+    let requestData = {
+      type: 'post',
+      url: '/api/login',
+      data: {
+        username: userInfo.email,
+        password: userInfo.password
+      }
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) {
+      console.log('LOGIN SUCCESS', res.data)
+      let authInfo = {
+        token_type: res.data.token_type,
+        access_token: res.data.access_token,
+        refresh_token: res.data.refresh_token
+      }
+      VueCookies.set('authInfo', authInfo, '365D')
+      dispatch('userInfo')
+    } else {
+      let error = JSON.parse(res.response).message
+      console.log('Error', error)
+      // Todo: Show error to user if have
+    }
   },
 
   async userInfo ({commit, dispatch}) {
-    let config = await dispatch('authHeaderMaker')
-    axios.get('http://localhost:9000/api/user', config)
-      .then(response => {
-        console.log('UserInfo SUCCESS', response.data)
-        commit('userInfo', response.data)
-      })
-      .catch(error => {
-        commit('userInfoDelete')
-        console.log('UserInfo SUCCESS', error)
-      })
+    let requestData = {
+      type: 'get',
+      url: '/api/user'
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) commit('userInfo', res.data)
+    else console.log('Something wrong when getting user data')
   },
 
   async userLogout ({commit, dispatch}) {
-    let config = await dispatch('authHeaderMaker')
-    axios.post('http://localhost:9000/api/logout_current', {}, config)
-      .then(response => {
-        console.log('User Infomation', response.data)
-        commit('userInfoDelete')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    let requestData = {
+      type: 'post',
+      url: '/api/logout_current',
+      data: null
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) {
+      console.log('User Infomation', res.data)
+      commit('userInfoDelete')
+    } else {
+      console.log('Something wrong when logging out')
+    }
   },
 
   async userLogoutAll ({commit, dispatch}) {
-    let config = await dispatch('authHeaderMaker')
-    axios.post('http://localhost:9000/api/logout_current', {}, config)
-      .then(response => {
-        console.log('User Infomation', response.data)
-        commit('userInfoDelete')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    let requestData = {
+      type: 'post',
+      url: '/api/logout_all',
+      data: null
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) {
+      console.log('User Infomation', res.data)
+      commit('userInfoDelete')
+    } else {
+      console.log('Something wrong when logging out')
+    }
   }
 }
 
