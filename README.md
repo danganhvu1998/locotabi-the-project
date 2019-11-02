@@ -1,4 +1,4 @@
-# Todo List App
+# LOCOTABI THE APP
 
 ## Installation
 
@@ -37,7 +37,7 @@
       1. Official Document: https://vuejs.org/v2/guide/
       2. Vue Routing:
          1. https://router.vuejs.org/guide/#javascript
-         2. https://router.vuejs.org/guide/#javascript
+         2. https://router.vuejs.org/guide/essentials/dynamic-matching.html
       3. How to connect with server
          1. Axios: https://www.npmjs.com/package/vue-axios
       4. How to remember token with cookies
