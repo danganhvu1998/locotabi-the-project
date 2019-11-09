@@ -24,3 +24,5 @@ Route::post("/register", "AuthController@register")->name("register");
 Route::middleware('auth:api')->post("/logout_current", "AuthController@logoutCurrent")->name("logout_current");
 
 Route::middleware('auth:api')->post("/logout_all", "AuthController@logoutAll")->name("logout_all");
+
+Route::middleware('auth:api')->post("/feedback", "FeedbackController@feedback")->name("feedback");

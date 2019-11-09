@@ -3,11 +3,6 @@
 // import Vue from 'vue'
 
 const state = {
-  username: '',
-  email: '',
-  token_type: 'Bearer',
-  access_token: '',
-  refresh_token: '',
   message: ''
 }
 
