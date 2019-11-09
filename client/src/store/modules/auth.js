@@ -26,14 +26,14 @@ const actions = {
     let requestData = {
       type: 'post',
       url: '/api/register',
-      data: {
-        email: userInfo.email,
-        name: userInfo.name,
-        password: userInfo.password
-      }
+      data: userInfo
     }
     let res = await dispatch('requestSender', requestData)
-    if (res.status >= 200 & res.status <= 299) dispatch('login', userInfo)
+    let loginData = {
+      username: userInfo.email,
+      password: userInfo.password
+    }
+    if (res.status >= 200 & res.status <= 299) dispatch('login', loginData)
     else {
       let ObjectErrors = JSON.parse(res.response).errors
       console.log('Error', ObjectErrors)
@@ -45,10 +45,7 @@ const actions = {
     let requestData = {
       type: 'post',
       url: '/api/login',
-      data: {
-        username: userInfo.email,
-        password: userInfo.password
-      }
+      data: userInfo
     }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
@@ -73,8 +70,10 @@ const actions = {
       url: '/api/user'
     }
     let res = await dispatch('requestSender', requestData)
-    if (res.status >= 200 & res.status <= 299) commit('userInfo', res.data)
-    else console.log('Something wrong when getting user data')
+    if (res.status >= 200 & res.status <= 299) {
+      commit('userInfo', res.data)
+      console.log(res.data)
+    } else console.log('Something wrong when getting user data')
   },
 
   async userLogout ({commit, dispatch}) {

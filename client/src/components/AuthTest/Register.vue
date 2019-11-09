@@ -5,6 +5,7 @@
       <form @submit='onRegister'>
         <input type='text' v-model='username' placeholder='Username'><br>
         <input type='text' v-model='email' placeholder='Email'><br>
+        <input type='text' v-model='language' placeholder='Language'><br>
         <input type='password' v-model='password' placeholder='Password'><br>
         <input type='submit' :value="$t('register')">
       </form>
@@ -21,7 +22,8 @@ export default {
     return {
       username: 'Dang Anh Vu',
       email: 'conmaxau@gmail.com',
-      password: 'hahahahaha'
+      password: 'hahahahaha',
+      language: 'en'
     }
   },
   methods: {
@@ -31,7 +33,8 @@ export default {
       let userInfo = {
         name: this.username,
         email: this.email,
-        password: this.password
+        password: this.password,
+        language: this.language
       }
       this.register(userInfo)
     }
