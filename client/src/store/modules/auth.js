@@ -33,8 +33,10 @@ const actions = {
       username: userInfo.email,
       password: userInfo.password
     }
-    if (res.status >= 200 & res.status <= 299) dispatch('login', loginData)
-    else {
+    if (res.status >= 200 & res.status <= 299) {
+      console.log(res.data)
+      dispatch('login', loginData)
+    } else {
       let ObjectErrors = JSON.parse(res.response).errors
       console.log('Error', ObjectErrors)
       // Todo: Show error to user if have
@@ -117,6 +119,7 @@ const mutations = {
   userInfo: (state, userInfo) => {
     state.username = userInfo.name
     state.email = userInfo.email
+    state.language = userInfo.language
   },
 
   userInfoDelete: (state) => {
