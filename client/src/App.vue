@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>1 - 3</b-col>
+        <b-col>2 - 3</b-col>
+        <b-col>3 - 3</b-col>
+      </b-row>
+    </b-container>
     <nav>Nav Here</nav>
     <router-view/>
   </div>
