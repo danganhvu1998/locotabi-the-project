@@ -1,19 +1,13 @@
 <template>
   <div id="app">
     <nav>Nav Here</nav>
-    <Feedback />
     <router-view/>
   </div>
 </template>
 
 <script>
-import Feedback from './components/Feedback'
-
 export default {
-  name: 'App',
-  components: {
-    Feedback
-  }
+  name: 'App'
 }
 </script>
 
