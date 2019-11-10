@@ -5,5 +5,7 @@
   "logout": "Đăng Xuất",
   "register": "Đăng Kí",
   "login": "Đăng Nhập",
-  "user": "Người Dùng"
+  "user": "Người Dùng",
+  "language": "Ngôn Ngữ",
+  "email": "Email"
 }

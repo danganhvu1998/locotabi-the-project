@@ -5,5 +5,7 @@
   "logout": "Logout",
   "register": "Register",
   "login": "Login",
-  "user": "User"
+  "user": "User",
+  "language": "Language",
+  "email": "Email"
 }

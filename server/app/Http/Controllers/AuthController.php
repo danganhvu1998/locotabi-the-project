@@ -45,18 +45,21 @@ class AuthController extends Controller
             ->issueToken($request);
     }
 
-    public function register(Request $request){   
+    public function register(Request $request){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'language' => ['required', 'string', 'max:4'],
         ]);
-
-        return User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->language = $request->language;
+        $user->password = Hash::make($request->password);
+        if($user->save()) return 'OK';
+        else return 'Error';
+        // Todo: return code 4xx instead of 2xx
     }
 
     public function logoutAll(Request $request){   

@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('language', 5)->default('en');
+            $table->string('avatar', 250)->default('/storage/images/default-avatar.png'); // Todo: edit to default image
+            $table->text('self_intro')->nullable();
+            $table->string('currency', 15)->default('usd');
+            $table->integer('self_thinking_travel_style')->default(0);
+            $table->integer('question_result_travel_style')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

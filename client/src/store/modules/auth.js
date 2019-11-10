@@ -2,11 +2,14 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
-Vue.use(VueCookies, axios, VueAxios)
+import VueI18n from 'vue-i18n'
+Vue.use(VueCookies, axios, VueAxios, VueI18n)
 
 const state = {
   username: '',
   email: '',
+  language: '',
+  avatar: '',
   token_type: 'Bearer',
   access_token: '',
   refresh_token: ''
@@ -14,7 +17,9 @@ const state = {
 
 const getters = {
   username: state => state.username,
+  userLanguage: state => state.language,
   email: state => state.email,
+  avatar: state => state.avatar,
   token_type: state => state.token_type,
   access_token: state => state.access_token,
   refresh_token: state => state.refresh_token,
@@ -26,15 +31,17 @@ const actions = {
     let requestData = {
       type: 'post',
       url: '/api/register',
-      data: {
-        email: userInfo.email,
-        name: userInfo.name,
-        password: userInfo.password
-      }
+      data: userInfo
     }
     let res = await dispatch('requestSender', requestData)
-    if (res.status >= 200 & res.status <= 299) dispatch('login', userInfo)
-    else {
+    let loginData = {
+      username: userInfo.email,
+      password: userInfo.password
+    }
+    if (res.status >= 200 & res.status <= 299) {
+      // console.log(res.data)
+      dispatch('login', loginData)
+    } else {
       let ObjectErrors = JSON.parse(res.response).errors
       console.log('Error', ObjectErrors)
       // Todo: Show error to user if have
@@ -42,17 +49,15 @@ const actions = {
   },
 
   async login ({dispatch}, userInfo) {
+    console.log(userInfo)
     let requestData = {
       type: 'post',
       url: '/api/login',
-      data: {
-        username: userInfo.email,
-        password: userInfo.password
-      }
+      data: userInfo
     }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
-      console.log('LOGIN SUCCESS', res.data)
+      // console.log('LOGIN SUCCESS', res.data)
       let authInfo = {
         token_type: res.data.token_type,
         access_token: res.data.access_token,
@@ -72,9 +77,12 @@ const actions = {
       type: 'get',
       url: '/api/user'
     }
+    // Todo: change locale when take user data
     let res = await dispatch('requestSender', requestData)
-    if (res.status >= 200 & res.status <= 299) commit('userInfo', res.data)
-    else console.log('Something wrong when getting user data')
+    if (res.status >= 200 & res.status <= 299) {
+      commit('userInfo', res.data)
+      console.log(res.data)
+    } else console.log('Something wrong when getting user data')
   },
 
   async userLogout ({commit, dispatch}) {
@@ -118,6 +126,8 @@ const mutations = {
   userInfo: (state, userInfo) => {
     state.username = userInfo.name
     state.email = userInfo.email
+    state.language = userInfo.language
+    state.avatar = userInfo.avatar
   },
 
   userInfoDelete: (state) => {
