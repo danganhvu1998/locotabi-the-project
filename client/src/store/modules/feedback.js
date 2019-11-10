@@ -15,14 +15,12 @@ const actions = {
     let requestData = {
       type: 'post',
       url: '/api/feedback',
-      data: {
-        message: feedback.message
-      }
+      data: feedback
     }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
       // console.log(res.data)
-      console.log('Your message is sent successfully.')
+      alert('Your message is sent successfully!')
     } else {
       let ObjectErrors = JSON.parse(res.response).errors
       console.log('Error', ObjectErrors)
