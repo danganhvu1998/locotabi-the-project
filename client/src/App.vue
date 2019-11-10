@@ -1,20 +1,17 @@
 <template>
   <div id="app">
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>1 - 3</b-col>
-        <b-col>2 - 3</b-col>
-        <b-col>3 - 3</b-col>
-      </b-row>
-    </b-container>
-    <nav>Nav Here</nav>
+    <Navbar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from './components/NavBar/Navbar.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar
+  }
 }
 </script>
 
