@@ -22,10 +22,7 @@ export default {
     ...mapActions(['sendFeedback']),
     onSend (e) {
       e.preventDefault()
-      let feedback = {
-        message: this.message
-      }
-      this.sendFeedback(feedback)
+      this.sendFeedback(this.message)
     }
   }
 }

@@ -1,6 +1,7 @@
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
 // import Vue from 'vue'
+import AuthModule from './auth'
 
 const state = {
   message: ''
@@ -11,12 +12,15 @@ const getters = {
 }
 
 const actions = {
-  async sendFeedback ({dispatch}, feedback) {
-    console.log(localStorage.getItem['token'])
+  async sendFeedback ({dispatch}, message) {
     let requestData = {
       type: 'post',
       url: '/api/feedback',
-      data: feedback
+      data: {
+        message: message,
+        name: AuthModule.state.username ? AuthModule.state.username : 'anonymous',
+        email: AuthModule.state.email ? AuthModule.state.email : 'anonymous'
+      }
     }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
