@@ -19,13 +19,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['send']),
+    ...mapActions(['sendFeedback']),
     onSend (e) {
       e.preventDefault()
       let feedback = {
         message: this.message
       }
-      this.send(feedback)
+      this.sendFeedback(feedback)
     }
   }
 }

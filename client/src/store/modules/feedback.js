@@ -11,7 +11,8 @@ const getters = {
 }
 
 const actions = {
-  async send ({dispatch}, feedback) {
+  async sendFeedback ({dispatch}, feedback) {
+    console.log(localStorage.getItem['token'])
     let requestData = {
       type: 'post',
       url: '/api/feedback',

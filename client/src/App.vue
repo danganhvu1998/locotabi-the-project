@@ -2,12 +2,18 @@
   <div id="app">
     <nav>Nav Here</nav>
     <router-view/>
+    <Feedback />
   </div>
 </template>
 
 <script>
+import Feedback from './components/Feedback'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Feedback
+  }
 }
 </script>
 
