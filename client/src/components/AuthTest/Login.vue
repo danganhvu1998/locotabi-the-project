@@ -4,7 +4,7 @@
     <h1>{{$t('login')}}</h1>
     <div>
       <form @submit="onLogin">
-        <input type="text" v-model="email" placeholder="email"><br>
+        <input type="text" v-model="username" placeholder="email"><br>
         <input type="password" v-model="password" placeholder="Password"><br>
         <input type="submit" :value='$t("login")'>
       </form>
@@ -19,7 +19,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      email: 'conmaxau@gmail.com',
+      username: 'conmaxau@gmail.com',
       password: 'hahahahaha'
     }
   },
@@ -28,10 +28,11 @@ export default {
     onLogin (e) {
       e.preventDefault()
       let userInfo = {
-        email: this.email,
+        username: this.username,
         password: this.password
       }
       this.login(userInfo)
+      this.userInfo()
     }
   }
 }
