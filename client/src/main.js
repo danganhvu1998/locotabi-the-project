@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import i18n from './i18n'
 import store from './store'
-
+// import BootstrapVue from 'bootstrap-vue'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
