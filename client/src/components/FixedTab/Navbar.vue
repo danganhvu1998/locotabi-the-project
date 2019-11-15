@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='navbar navbar-fixed-top'>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
        <div class="navbar-brand"><img src="../../assets/TheLocoLogo.png" width="90" height="90"></div>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -22,10 +22,10 @@
             <b-dropdown-item href="#">YEN</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-navbar-form>
-            <b-button class="my-2 my-sm-0" type="submit">Sign Up</b-button>
-            <b-button class="my-2 my-sm-0" type="submit">Login</b-button>
-          </b-navbar-form>
+        <b-navbar-nav>
+          <b-button href="#" class="button" variant="danger" type="submit">Sign Up</b-button>
+          <b-button href="#" class="button" variant="success" type="submit">Login</b-button>
+        </b-navbar-nav>
 
         </b-navbar-nav>
       </b-collapse>
