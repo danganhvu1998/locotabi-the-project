@@ -6,7 +6,7 @@
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item href="#">How The Loco works</b-nav-item>
-          <b-nav-item href="#">Blog</b-nav-item>
+          <b-nav-item href="#">About</b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
