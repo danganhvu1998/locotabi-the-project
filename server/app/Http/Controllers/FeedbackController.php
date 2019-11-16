@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    public function feedback(Request $request) {
+    public function feedbackAnonymous(Request $request) {
         return Feedback::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => 'anonymous',
+            'email' => 'anonymous',
             'message' => $request->message
         ]);
-        // return response()->json('Your message is sent successfully.', 200);
+    }
+
+    public function feedbackUser(Request $request) {
+        return Feedback::create([
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+            'message' => $request->message
+        ]);
     }
 }

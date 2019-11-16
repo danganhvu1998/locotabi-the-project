@@ -21,11 +21,11 @@ Route::post("/login", "AuthController@login")->name("login");
 
 Route::post("/register", "AuthController@register")->name("register");
 
-Route::post("/feedback", "FeedbackController@feedback")->name("feedback");
+Route::post("/feedback/anonymous", "FeedbackController@feedbackAnonymous")->name("feedbackAnonymous");
 
 Route::middleware('auth:api')->post("/logout_current", "AuthController@logoutCurrent")->name("logout_current");
 
 Route::middleware('auth:api')->post("/logout_all", "AuthController@logoutAll")->name("logout_all");
 
-// Route::middleware('auth:api')->post("/feedback", "FeedbackController@feedback")->name("feedback");
+Route::middleware('auth:api')->post("/feedback/user", "FeedbackController@feedbackUser")->name("feedbackUser");
 

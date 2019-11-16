@@ -12,22 +12,17 @@ const getters = {
 }
 
 const actions = {
-  async sendFeedback ({dispatch}, message) {
+  async sendFeedback ({dispatch}, feedback) {
     let requestData = {
       type: 'post',
-      url: '/api/feedback',
-      data: {
-        message: message,
-        name: AuthModule.state.username ? AuthModule.state.username : 'anonymous',
-        email: AuthModule.state.email ? AuthModule.state.email : 'anonymous'
-      }
+      url: AuthModule.state.username ? '/api/feedback/user' : '/api/feedback/anonymous',
+      data: feedback
     }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
-      // console.log(res.data)
       alert('Your message is sent successfully!')
     } else {
-      let ObjectErrors = JSON.parse(res.response).errors
+      let ObjectErrors = JSON.parse(res.response)
       console.log('Error', ObjectErrors)
       // Todo: Show error to user if have
     }
