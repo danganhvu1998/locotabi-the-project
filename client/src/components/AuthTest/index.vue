@@ -18,6 +18,8 @@ export default {
     UserInfo
   },
   data () {
+    return {
+    }
   }
 }
 </script>
