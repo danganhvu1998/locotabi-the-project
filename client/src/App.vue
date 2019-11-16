@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <nav>Nav Here</nav>
+    <Navbar/>
     <router-view/>
-    <Feedback />
+    <Footer/>
   </div>
 </template>
 
 <script>
-import Feedback from './components/Feedback'
-
+import Navbar from './components/FixedTab/Navbar.vue'
+import Footer from './components/FixedTab/Footer.vue'
 export default {
   name: 'App',
   components: {
-    Feedback
+    Navbar,
+    Footer
   }
 }
 </script>
