@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
-       <div class="navbar-brand"><img src="../../assets/TheLocoLogo.png" width="90" height="90"></img></div> 
+       <div class="navbar-brand"><img src="../../assets/TheLocoLogo.png" width="90" height="90"></div>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
