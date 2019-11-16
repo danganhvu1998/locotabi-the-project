@@ -32,7 +32,6 @@ export default {
         password: this.password
       }
       this.login(userInfo)
-      this.userInfo()
     }
   }
 }
