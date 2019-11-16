@@ -1,12 +1,14 @@
 <template>
   <div class='navbar navbar-fixed-top'>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+      <a href="/">
        <div class="navbar-brand"><img src="../../assets/TheLocoLogo.png" width="90" height="90"></div>
+      </a>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">How The Loco works</b-nav-item>
-          <b-nav-item href="#">About</b-nav-item>
+          <b-nav-item href="/howthelocoworks">How The Loco works</b-nav-item>
+          <b-nav-item href="/about">About</b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
