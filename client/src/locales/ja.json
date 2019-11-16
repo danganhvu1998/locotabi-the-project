@@ -3,7 +3,11 @@
   "user info": "User Info",
   "logout all": "Logout All",
   "logout": "Logout",
+  "edit info": "Edit Info",
   "register": "Register",
   "login": "Login",
-  "user": "User"
+  "user": "User",
+  "password": "Password",
+  "self intro": "Self introduction",
+  "currency": "Currency"
 }

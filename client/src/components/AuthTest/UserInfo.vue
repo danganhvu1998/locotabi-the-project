@@ -3,7 +3,8 @@
     <hr>
     <h1>{{$t('user info')}}</h1>
     <span><button @click='userLogout()'>{{$t('logout')}}</button></span>
-    <span><button @click='userLogoutAll()'>{{$t('logout all')}}</button></span><br>
+    <span><button @click='userLogoutAll()'>{{$t('logout all')}}</button></span>
+    <span><button><router-link to="/test/auth/edit_info">{{$t('edit info')}}</router-link></button></span><br>
     <button v-for='language in languages' v-bind:key='language.language' @click='localeChange(language.locale)'>
       {{language.language}}
     </button>
