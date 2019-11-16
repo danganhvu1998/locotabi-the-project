@@ -1,13 +1,19 @@
 <template>
   <div id="app">
-    <nav>Nav Here</nav>
+    <Navbar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from './components/FixedTab/Navbar.vue'
+import Footer from './components/FixedTab/Footer.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar,
+    Footer
+  }
 }
 </script>
 
