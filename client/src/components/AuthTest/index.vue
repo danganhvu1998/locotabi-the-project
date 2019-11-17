@@ -16,10 +16,6 @@ export default {
     Register,
     Login,
     UserInfo
-  },
-  data () {
-    return {
-    }
   }
 }
 </script>

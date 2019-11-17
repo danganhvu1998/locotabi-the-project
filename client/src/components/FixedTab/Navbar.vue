@@ -22,10 +22,8 @@
             <b-dropdown-item href="#">YEN</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-navbar-form>
-            <b-button class="my-2 my-sm-0" type="submit">Sign Up</b-button>
-            <b-button class="my-2 my-sm-0" type="submit">Login</b-button>
-          </b-navbar-form>
+          <b-link href="/register" class="btn btn-success">Register</b-link>
+          <b-link href="/login" class="btn btn-primary">Login</b-link>
 
         </b-navbar-nav>
       </b-collapse>
