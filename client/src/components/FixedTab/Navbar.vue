@@ -25,8 +25,8 @@
           </b-nav-item-dropdown>
 
         <b-navbar-nav>
-          <b-button href="#" class="button" variant="danger" type="submit">Sign Up</b-button>
-          <b-button href="#" class="button" variant="success" type="submit">Login</b-button>
+          <b-link href="/register" class="btn btn-danger">Register</b-link>
+          <b-link href="/login" class="btn btn-success">Login</b-link>
         </b-navbar-nav>
 
         </b-navbar-nav>

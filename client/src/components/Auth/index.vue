@@ -1,6 +1,5 @@
 <template>
   <div>
-    <UserInfo />
     <Login />
     <Register />
   </div>
@@ -9,17 +8,11 @@
 <script>
 import Register from './Register'
 import Login from './Login'
-import UserInfo from './UserInfo'
 export default {
   name: 'Auth',
   components: {
     Register,
-    Login,
-    UserInfo
-  },
-  data () {
-    return {
-    }
+    Login
   }
 }
 </script>

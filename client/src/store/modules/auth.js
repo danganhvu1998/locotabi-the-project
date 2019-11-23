@@ -82,7 +82,7 @@ const actions = {
     if (res.status >= 200 & res.status <= 299) {
       commit('userInfo', res.data)
       console.log(res.data)
-    } else console.log('Something wrong when getting user data')
+    } else console.log(res)
   },
 
   async userLogout ({commit, dispatch}) {

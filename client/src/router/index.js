@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ServerCongifInfo from '@/components/ServerCongifInfo'
-import Auth from '@/components/AuthTest'
+import Auth from '@/components/Auth'
+import Login from '@/components/Auth/Login'
+import Register from '@/components/Auth/Register'
 import About from '@/components/About'
 import HowTheLocoWorks from '@/components/HowTheLocoWorks'
 
@@ -19,6 +21,16 @@ const router = new Router({
       path: '/test/auth',
       name: 'Auth',
       component: Auth
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/about',
