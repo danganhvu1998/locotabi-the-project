@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit Information</h1><br>
+    <h1>{{$t('edit info')}}</h1><br>
     <div>
       <form @submit="onSend($event, 'username')">
         <label for="username">{{$t('user')}}: </label>
