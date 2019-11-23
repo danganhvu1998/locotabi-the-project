@@ -9,6 +9,8 @@ const state = {
   username: '',
   email: '',
   language: '',
+  self_intro: '',
+  currency: '',
   avatar: '',
   token_type: 'Bearer',
   access_token: '',
@@ -19,6 +21,8 @@ const getters = {
   username: state => state.username,
   userLanguage: state => state.language,
   email: state => state.email,
+  self_intro: state => state.self_intro,
+  currency: state => state.currency,
   avatar: state => state.avatar,
   token_type: state => state.token_type,
   access_token: state => state.access_token,
@@ -113,6 +117,18 @@ const actions = {
     } else {
       console.log('Something wrong when logging out')
     }
+  },
+
+  async fetchUserInfo ({commit, dispatch}) {
+    let requestData = {
+      type: 'get',
+      url: '/api/user'
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) {
+      commit('fetchUserInfo', res.data)
+      console.log(res.data)
+    } else console.log('Something wrong when getting user data')
   }
 }
 
@@ -136,6 +152,13 @@ const mutations = {
     state.refresh_token = ''
     state.username = ''
     state.email = ''
+  },
+
+  fetchUserInfo: (state, userInfo) => {
+    state.username = userInfo.name
+    state.language = userInfo.language
+    state.self_intro = userInfo.self_intro
+    state.currency = userInfo.currency
   }
 }
 

@@ -6,7 +6,7 @@
         <label for="username">{{$t('user')}}: </label>
         <input type="text" v-model='username'><br>
         <label for="language">{{$t('language')}}: </label>
-        <input type="text" v-model='language'><br>
+        <input type="text" v-model='userLanguage'><br>
         <label for="password">{{$t('password')}}: </label>
         <input type="text" v-model='password'><br>
         <label for="self_intro">{{$t('self intro')}}: </label>
@@ -19,11 +19,26 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'EditInfo',
+  computed: mapGetters([
+    'username',
+    'userLanguage',
+    'self_intro',
+    'currency'
+  ]),
+  methods: {
+    ...mapActions(['fetchUserInfo'])
+  },
   data () {
     return {
+      password: ''
     }
+  },
+  created () {
+    this.fetchUserInfo()
   }
 }
 </script>
