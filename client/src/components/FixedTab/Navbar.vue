@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class='navbar navbar-fixed-top'>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+      <a href="/">
        <div class="navbar-brand"><img src="../../assets/TheLocoLogo.png" width="90" height="90"></div>
+      </a>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">How The Loco works</b-nav-item>
-          <b-nav-item href="#">About</b-nav-item>
+          <b-nav-item href="/how-the-loco-works">How The Loco works</b-nav-item>
+          <b-nav-item href="/about">About</b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
@@ -22,10 +24,10 @@
             <b-dropdown-item href="#">YEN</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-navbar-form>
-            <b-button class="my-2 my-sm-0" type="submit">Sign Up</b-button>
-            <b-button class="my-2 my-sm-0" type="submit">Login</b-button>
-          </b-navbar-form>
+        <b-navbar-nav>
+          <b-link href="/register" class="btn btn-danger">Register</b-link>
+          <b-link href="/login" class="btn btn-success">Login</b-link>
+        </b-navbar-nav>
 
         </b-navbar-nav>
       </b-collapse>
@@ -40,11 +42,15 @@ export default {
 </script>
 
 <style>
+.navbar{
+  height: 10%;
+}
 .navbar-brand {
   position: relative;
 }
 .navbar.navbar-light.bg-light{
-  background-color: white!important;
+  /* background-color: transparent!important; */
+  background: rgba(220, 220, 220, 0.3)!important;
   color: #ff6666!important;
 }
 </style>

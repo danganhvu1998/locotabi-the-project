@@ -50,7 +50,6 @@ export default {
     }
   },
   created () {
-    console.log('TEST', this.userLanguage)
     this.userInfo()
   }
 }
