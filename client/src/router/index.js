@@ -26,7 +26,7 @@ const router = new Router({
       component: About
     },
     {
-      path: '/howthelocoworks',
+      path: '/how-the-loco-works',
       name: 'HowTheLocoWorks',
       component: HowTheLocoWorks
     }

@@ -7,7 +7,7 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/howthelocoworks">How The Loco works</b-nav-item>
+          <b-nav-item href="/how-the-loco-works">How The Loco works</b-nav-item>
           <b-nav-item href="/about">About</b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
@@ -42,11 +42,15 @@ export default {
 </script>
 
 <style>
+.navbar{
+  height: 10%;
+}
 .navbar-brand {
   position: relative;
 }
 .navbar.navbar-light.bg-light{
-  background-color: white!important;
+  /* background-color: transparent!important; */
+  background: rgba(220, 220, 220, 0.3)!important;
   color: #ff6666!important;
 }
 </style>
