@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ServerCongifInfo from '@/components/ServerCongifInfo'
-import Auth from '@/components/AuthTest'
-import Login from '@/components/AuthTest/Login'
-import Register from '@/components/AuthTest/Register'
+import Auth from '@/components/Auth'
+import Login from '@/components/Auth/Login'
+import Register from '@/components/Auth/Register'
 import About from '@/components/About'
 import HowTheLocoWorks from '@/components/HowTheLocoWorks'
 
