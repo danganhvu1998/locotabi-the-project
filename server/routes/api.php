@@ -29,4 +29,12 @@ Route::middleware('auth:api')->post("/logout_all", "AuthController@logoutAll")->
 
 Route::middleware('auth:api')->post("/feedback/user", "FeedbackController@feedbackUser")->name("feedbackUser");
 
-Route::middleware('auth:api')->post("/edit_info", "AuthController@editInfo")->name("edit_info");
+Route::middleware('auth:api')->post("/edit_username", "AuthController@editUsername")->name("edit_username");
+
+Route::middleware('auth:api')->post("/edit_language", "AuthController@editLanguage")->name("edit_language");
+
+Route::middleware('auth:api')->post("/edit_password", "AuthController@editPassword")->name("edit_password");
+
+Route::middleware('auth:api')->post("/edit_self_intro", "AuthController@editSelfIntro")->name("edit_self_intro");
+
+Route::middleware('auth:api')->post("/edit_currency", "AuthController@editCurrency")->name("edit_currency");

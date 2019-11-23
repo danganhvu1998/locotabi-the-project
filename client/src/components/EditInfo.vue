@@ -2,18 +2,30 @@
   <div>
     <h1>Edit Information</h1><br>
     <div>
-      <form @submit="onSend">
+      <form @submit="onSend($event, 'username')">
         <label for="username">{{$t('user')}}: </label>
         <input type="text" v-model='username'><br>
+        <input type="submit" value="Update">
+      </form>
+      <form @submit="onSend($event, 'language')">
         <label for="language">{{$t('language')}}: </label>
         <input type="text" v-model='userLanguage'><br>
+        <input type="submit" value="Update">
+      </form>
+      <form @submit="onSend($event, 'password')">
         <label for="password">{{$t('password')}}: </label>
         <input type="text" v-model='password'><br>
+        <input type="submit" value="Update">
+      </form>
+      <form @submit="onSend($event, 'self_intro')">
         <label for="self_intro">{{$t('self intro')}}: </label>
         <textarea v-model="self_intro" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Update">
+      </form>
+       <form @submit="onSend($event, 'currency')">
         <label for="currency">{{$t('currency')}}: </label>
         <input type="text" v-model='currency'><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Update">
       </form>
     </div>
   </div>
@@ -60,9 +72,10 @@ export default {
   },
   methods: {
     ...mapActions(['fetchUserInfo', 'editInfo']),
-    onSend (e) {
+    onSend (e, fieldChange) {
       e.preventDefault()
       let newUserInfo = {
+        fieldChange: fieldChange,
         userId: this.$store.getters.userId,
         name: this.username,
         language: this.userLanguage,

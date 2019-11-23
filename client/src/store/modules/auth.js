@@ -135,7 +135,7 @@ const actions = {
   async editInfo ({dispatch}, newUserInfo) {
     let requestData = {
       type: 'post',
-      url: '/api/edit_info',
+      url: '/api/edit_' + newUserInfo.fieldChange,
       data: newUserInfo
     }
     let res = await dispatch('requestSender', requestData)

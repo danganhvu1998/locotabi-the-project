@@ -64,18 +64,48 @@ class AuthController extends Controller
         // Todo: return code 4xx instead of 2xx
     }
 
-    public function editInfo(Request $request){
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8'],
-        //     'language' => ['required', 'string', 'max:4'],
-        // ]);
+    public function editUsername(Request $request){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255']
+        ]);
         $user = User::find($request->userId);
         $user->name = $request->name;
+        if($user->save()) return 'OK';
+        else return 'Error';
+    }
+
+    public function editLanguage(Request $request){
+        $request->validate([
+            'language' => ['required', 'string', 'max:4']
+        ]);
+        $user = User::find($request->userId);
         $user->language = $request->language;
+        if($user->save()) return 'OK';
+        else return 'Error';
+    }
+
+    public function editPassword(Request $request){
+        $request->validate([
+            'password' => ['required', 'string', 'min:8']
+        ]);
+        $user = User::find($request->userId);
         $user->password = Hash::make($request->password);
+        if($user->save()) return 'OK';
+        else return 'Error';
+    }
+
+    public function editSelfIntro(Request $request){
+        $user = User::find($request->userId);
         $user->self_intro = $request->self_intro;
+        if($user->save()) return 'OK';
+        else return 'Error';
+    }
+
+    public function editCurrency(Request $request){
+        $request->validate([
+            'currency' => ['required', 'string', 'max:4']
+        ]);
+        $user = User::find($request->userId);
         $user->currency = $request->currency;
         if($user->save()) return 'OK';
         else return 'Error';
