@@ -14,7 +14,7 @@
       </form>
       <form @submit="onSend($event, 'password')">
         <label for="password">{{$t('password')}}: </label>
-        <input type="text" v-model='password'><br>
+        <input type="password" v-model='password'><br>
         <input type="submit" value="Update">
       </form>
       <form @submit="onSend($event, 'self_intro')">
