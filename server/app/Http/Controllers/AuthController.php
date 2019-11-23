@@ -57,8 +57,6 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->language = $request->language;
         $user->password = Hash::make($request->password);
-        $user->self_intro = $request->self_intro;
-        $user->currency = $request->currency;
         if($user->save()) return 'OK';
         else return 'Error';
         // Todo: return code 4xx instead of 2xx
@@ -86,12 +84,17 @@ class AuthController extends Controller
 
     public function editPassword(Request $request){
         $request->validate([
-            'password' => ['required', 'string', 'min:8']
+            'current_password' => ['required', 'string', 'min:8'],
+            'new_password' => ['required', 'string', 'min:8']
         ]);
         $user = User::find($request->userId);
-        $user->password = Hash::make($request->password);
-        if($user->save()) return 'OK';
-        else return 'Error';
+        if (Hash::check($request->current_password, $user->password)) {
+            $user->password = Hash::make($request->new_password);
+            if($user->save()) return 'OK';
+            else return 'Error';
+        } else {
+            return 'Current password is wrong!';
+        }
     }
 
     public function editSelfIntro(Request $request){

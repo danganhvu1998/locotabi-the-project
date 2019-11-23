@@ -138,6 +138,14 @@ const actions = {
       url: '/api/edit_' + newUserInfo.fieldChange,
       data: newUserInfo
     }
+    // Check password input
+    if (newUserInfo.fieldChange === 'password') {
+      if (newUserInfo.new_password === newUserInfo.current_password) {
+        window.alert('New Password is same as Current Password!')
+      } else if (newUserInfo.new_password !== newUserInfo.confirm_new_password) {
+        window.alert('New Password and Confirm New Password does not match!')
+      }
+    }
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
       console.log(res.data)

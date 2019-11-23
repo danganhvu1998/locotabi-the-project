@@ -11,5 +11,8 @@
   "email": "Email",
   "password": "Password",
   "self intro": "Self introduction",
-  "currency": "Currency"
+  "currency": "Currency",
+  "current password": "Current Password",
+  "new password": "New Password",
+  "confirm new password": "Confirm New Password"
 }

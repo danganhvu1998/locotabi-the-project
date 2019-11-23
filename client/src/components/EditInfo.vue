@@ -13,8 +13,12 @@
         <input type="submit" value="Update">
       </form>
       <form @submit="onSend($event, 'password')">
-        <label for="password">{{$t('password')}}: </label>
-        <input type="password" v-model='password'><br>
+        <label for="current_password">{{$t('current password')}}: </label>
+        <input type="password" v-model='current_password'><br>
+        <label for="new_password">{{$t('new password')}}: </label>
+        <input type="password" v-model='new_password'><br>
+        <label for="confirm_new_password">{{$t('confirm new password')}}: </label>
+        <input type="password" v-model='confirm_new_password'><br>
         <input type="submit" value="Update">
       </form>
       <form @submit="onSend($event, 'self_intro')">
@@ -79,7 +83,9 @@ export default {
         userId: this.$store.getters.userId,
         name: this.username,
         language: this.userLanguage,
-        password: this.password,
+        current_password: this.current_password,
+        new_password: this.new_password,
+        confirm_new_password: this.confirm_new_password,
         self_intro: this.self_intro,
         currency: this.currency
       }
@@ -88,7 +94,9 @@ export default {
   },
   data () {
     return {
-      password: ''
+      current_password: '',
+      new_password: '',
+      confirm_new_password: ''
     }
   },
   created () {

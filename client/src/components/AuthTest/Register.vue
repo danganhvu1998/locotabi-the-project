@@ -7,8 +7,6 @@
         <input type='text' v-model='email' placeholder='Email'><br>
         <input type='text' v-model='language' placeholder='Language'><br>
         <input type='password' v-model='password' placeholder='Password'><br>
-        <textarea v-model="self_intro" cols="22" rows="10" placeholder='Self introduction'></textarea><br>
-        <input type='currency' v-model='currency' placeholder='Currency'><br>
         <input type='submit' :value="$t('register')">
       </form>
     </div>
@@ -25,9 +23,7 @@ export default {
       username: 'Dang Anh Vu',
       email: 'conmaxau@gmail.com',
       password: 'hahahahaha',
-      language: 'en',
-      self_intro: '',
-      currency: 'usd'
+      language: 'en'
     }
   },
   methods: {
@@ -38,9 +34,7 @@ export default {
         name: this.username,
         email: this.email,
         password: this.password,
-        language: this.language,
-        self_intro: this.self_intro,
-        currency: this.currency
+        language: this.language
       }
       this.register(userInfo)
     }
