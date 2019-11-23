@@ -6,6 +6,7 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueCookies, axios, VueAxios, VueI18n)
 
 const state = {
+  userId: '',
   username: '',
   email: '',
   language: '',
@@ -18,6 +19,7 @@ const state = {
 }
 
 const getters = {
+  userId: state => state.userId,
   username: state => state.username,
   userLanguage: state => state.language,
   email: state => state.email,
@@ -127,8 +129,22 @@ const actions = {
     let res = await dispatch('requestSender', requestData)
     if (res.status >= 200 & res.status <= 299) {
       commit('fetchUserInfo', res.data)
-      console.log(res.data)
     } else console.log('Something wrong when getting user data')
+  },
+
+  async editInfo ({dispatch}, newUserInfo) {
+    let requestData = {
+      type: 'post',
+      url: '/api/edit_info',
+      data: newUserInfo
+    }
+    let res = await dispatch('requestSender', requestData)
+    if (res.status >= 200 & res.status <= 299) {
+      console.log(res.data)
+    } else {
+      let ObjectErrors = JSON.parse(res.response).errors
+      console.log('Error', ObjectErrors)
+    }
   }
 }
 
@@ -155,10 +171,27 @@ const mutations = {
   },
 
   fetchUserInfo: (state, userInfo) => {
+    state.userId = userInfo.id
     state.username = userInfo.name
     state.language = userInfo.language
     state.self_intro = userInfo.self_intro
     state.currency = userInfo.currency
+  },
+
+  updateUsername: (state, newUsername) => {
+    state.username = newUsername
+  },
+
+  updateUserLanguage: (state, newUserLanguage) => {
+    state.language = newUserLanguage
+  },
+
+  updateSelfIntro: (state, newSelfIntro) => {
+    state.self_intro = newSelfIntro
+  },
+
+  updateCurrency: (state, newCurrency) => {
+    state.currency = newCurrency
   }
 }
 

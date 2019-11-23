@@ -30,7 +30,7 @@ export default {
       this.$root.$i18n.locale = locale
     },
     toEditInfo () {
-      this.$router.push('edit_info')
+      this.$router.push({ name: 'EditInfo' })
     }
   },
   data () {

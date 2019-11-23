@@ -2,7 +2,7 @@
   <div>
     <h1>Edit Information</h1><br>
     <div>
-      <form>
+      <form @submit="onSend">
         <label for="username">{{$t('user')}}: </label>
         <input type="text" v-model='username'><br>
         <label for="language">{{$t('language')}}: </label>
@@ -13,24 +13,65 @@
         <textarea v-model="self_intro" cols="30" rows="10"></textarea><br>
         <label for="currency">{{$t('currency')}}: </label>
         <input type="text" v-model='currency'><br>
+        <input type="submit" value="Submit">
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'EditInfo',
-  computed: mapGetters([
-    'username',
-    'userLanguage',
-    'self_intro',
-    'currency'
-  ]),
+  computed: {
+    username: {
+      get () {
+        return this.$store.getters.username
+      },
+      set (newUsername) {
+        this.$store.commit('updateUsername', newUsername)
+      }
+    },
+    userLanguage: {
+      get () {
+        return this.$store.getters.userLanguage
+      },
+      set (newUserLanguage) {
+        this.$store.commit('updateUserLanguage', newUserLanguage)
+      }
+    },
+    self_intro: {
+      get () {
+        return this.$store.getters.self_intro
+      },
+      set (newSelfIntro) {
+        this.$store.commit('updateSelfIntro', newSelfIntro)
+      }
+    },
+    currency: {
+      get () {
+        return this.$store.getters.currency
+      },
+      set (newCurrency) {
+        this.$store.commit('updateCurrency', newCurrency)
+      }
+    }
+  },
   methods: {
-    ...mapActions(['fetchUserInfo'])
+    ...mapActions(['fetchUserInfo', 'editInfo']),
+    onSend (e) {
+      e.preventDefault()
+      let newUserInfo = {
+        userId: this.$store.getters.userId,
+        name: this.username,
+        language: this.userLanguage,
+        password: this.password,
+        self_intro: this.self_intro,
+        currency: this.currency
+      }
+      this.editInfo(newUserInfo)
+    }
   },
   data () {
     return {

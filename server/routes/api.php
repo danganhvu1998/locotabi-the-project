@@ -29,3 +29,4 @@ Route::middleware('auth:api')->post("/logout_all", "AuthController@logoutAll")->
 
 Route::middleware('auth:api')->post("/feedback/user", "FeedbackController@feedbackUser")->name("feedbackUser");
 
+Route::middleware('auth:api')->post("/edit_info", "AuthController@editInfo")->name("edit_info");

@@ -57,9 +57,28 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->language = $request->language;
         $user->password = Hash::make($request->password);
+        $user->self_intro = $request->self_intro;
+        $user->currency = $request->currency;
         if($user->save()) return 'OK';
         else return 'Error';
         // Todo: return code 4xx instead of 2xx
+    }
+
+    public function editInfo(Request $request){
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8'],
+        //     'language' => ['required', 'string', 'max:4'],
+        // ]);
+        $user = User::find($request->userId);
+        $user->name = $request->name;
+        $user->language = $request->language;
+        $user->password = Hash::make($request->password);
+        $user->self_intro = $request->self_intro;
+        $user->currency = $request->currency;
+        if($user->save()) return 'OK';
+        else return 'Error';
     }
 
     public function logoutAll(Request $request){   
