@@ -4,6 +4,8 @@ import ServerCongifInfo from '@/components/ServerCongifInfo'
 import Auth from '@/components/AuthTest'
 import Login from '@/components/AuthTest/Login'
 import Register from '@/components/AuthTest/Register'
+import About from '@/components/About'
+import HowTheLocoWorks from '@/components/HowTheLocoWorks'
 
 Vue.use(Router)
 
@@ -29,6 +31,16 @@ const router = new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },
+    {
+      path: '/how-the-loco-works',
+      name: 'HowTheLocoWorks',
+      component: HowTheLocoWorks
     }
   ]
 })
