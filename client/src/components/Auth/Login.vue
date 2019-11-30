@@ -6,7 +6,7 @@
       <form @submit="onLogin">
         <input type="text" v-model="username" placeholder="email"><br>
         <input type="password" v-model="password" placeholder="Password"><br>
-        <input type="submit" :value='$t("login")'>
+        <input type="submit" :value='$t("login")' class="btn btn-success">
       </form>
     </div>
     <hr>
