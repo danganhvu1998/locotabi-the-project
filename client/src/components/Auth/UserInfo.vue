@@ -43,7 +43,6 @@
                 </div>
               </div>
 
-
             </b-navbar-nav>
 
           </b-navbar-nav>
@@ -60,51 +59,43 @@
 </template>
 
 <script>
-  import {
-    mapGetters,
-    mapActions
-  } from 'vuex'
-  export default {
-    name: 'UserInfo',
-    computed: mapGetters([
-      'username',
-      'userLanguage',
-      'email',
-      'avatar'
-    ]),
-    methods: {
-      ...mapActions(['userInfo', 'userLogout', 'userLogoutAll']),
-      localeChange(locale) {
-        this.$root.$i18n.locale = locale
-      }
-    },
-    data() {
-      return {
-        languages: [{
-            locale: 'vi',
-            language: 'VI'
-          },
-          {
-            locale: 'en',
-            language: 'EN'
-          },
-          {
-            locale: 'ja',
-            language: 'JA'
-          }
-        ]
-      }
-    },
-    beforeCreate() {},
-    watch: {
-      userLanguage: function (val) {
-        this.localeChange(val)
-      }
-    },
-    created() {
-      this.userInfo()
+import {
+  mapGetters,
+  mapActions
+} from 'vuex'
+export default {
+  name: 'UserInfo',
+  computed: mapGetters([
+    'username',
+    'userLanguage',
+    'email',
+    'avatar'
+  ]),
+  methods: {
+    ...mapActions(['userInfo', 'userLogout', 'userLogoutAll']),
+    localeChange (locale) {
+      this.$root.$i18n.locale = locale
     }
+  },
+  data () {
+    return {
+      languages: [
+        {locale: 'vi', language: 'VI'},
+        {locale: 'en', language: 'EN'},
+        {locale: 'ja', language: 'JA'}
+      ]
+    }
+  },
+  beforeCreate () {},
+  watch: {
+    userLanguage: function (val) {
+      this.localeChange(val)
+    }
+  },
+  created () {
+    this.userInfo()
   }
+}
 
 </script>
 
