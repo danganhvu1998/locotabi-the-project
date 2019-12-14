@@ -6,6 +6,7 @@ import Login from '@/components/Auth/Login'
 import Register from '@/components/Auth/Register'
 import About from '@/components/About'
 import HowTheLocoWorks from '@/components/HowTheLocoWorks'
+import EditInfo from '@/components/EditInfo'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ const router = new Router({
       path: '/test/auth',
       name: 'Auth',
       component: Auth
+    },
+    {
+      path: '/test/auth/edit_info',
+      name: 'EditInfo',
+      component: EditInfo
     },
     {
       path: '/login',

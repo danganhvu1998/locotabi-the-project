@@ -3,7 +3,8 @@
     <hr>
     <h1>{{$t('user info')}}</h1>
     <span><button @click='userLogout()'>{{$t('logout')}}</button></span>
-    <span><button @click='userLogoutAll()'>{{$t('logout all')}}</button></span><br>
+    <span><button @click='userLogoutAll()'>{{$t('logout all')}}</button></span>
+    <span><button @click='toEditInfo()'>{{$t('edit info')}}</button></span><br>
     <button v-for='language in languages' v-bind:key='language.language' @click='localeChange(language.locale)'>
       {{language.language}}
     </button>
@@ -27,6 +28,9 @@ export default {
     ...mapActions(['userInfo', 'userLogout', 'userLogoutAll']),
     localeChange (locale) {
       this.$root.$i18n.locale = locale
+    },
+    toEditInfo () {
+      this.$router.push({ name: 'EditInfo' })
     }
   },
   data () {
